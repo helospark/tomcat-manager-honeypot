@@ -1,0 +1,2 @@
+OK - Listed global resources of %s types
+UserDatabase:org.apache.catalina.users.MemoryUserDatabase

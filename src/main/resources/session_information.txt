@@ -1,0 +1,2 @@
+OK - Session information for application at context path [%s]
+Default maximum session inactive interval [30] minutes

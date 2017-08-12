@@ -1,0 +1,3 @@
+OK - Session information for application at context path [%s]
+Default maximum session inactive interval [%d] minutes
+[>%d] minutes: [0] sessions were expired

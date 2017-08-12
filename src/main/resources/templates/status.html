@@ -1,0 +1,315 @@
+<html>
+<head>
+<style>
+h1 {
+	font-family: Tahoma, Arial, sans-serif;
+	color: white;
+	background-color: #525D76;
+	font-size: 22px;
+}
+
+h2 {
+	font-family: Tahoma, Arial, sans-serif;
+	color: white;
+	background-color: #525D76;
+	font-size: 16px;
+}
+
+h3 {
+	font-family: Tahoma, Arial, sans-serif;
+	color: white;
+	background-color: #525D76;
+	font-size: 14px;
+}
+
+body {
+	font-family: Tahoma, Arial, sans-serif;
+	color: black;
+	background-color: white;
+}
+
+b {
+	font-family: Tahoma, Arial, sans-serif;
+	color: white;
+	background-color: #525D76;
+}
+
+p {
+	font-family: Tahoma, Arial, sans-serif;
+	background: white;
+	color: black;
+	font-size: 12px;
+}
+
+a {
+	color: black;
+}
+
+a.name {
+	color: black;
+}
+
+.line {
+	height: 1px;
+	background-color: #525D76;
+	border: none;
+}
+
+table {
+	width: 100%;
+}
+
+td.page-title {
+	text-align: center;
+	vertical-align: top;
+	font-family: sans-serif, Tahoma, Arial;
+	font-weight: bold;
+	background: white;
+	color: black;
+}
+
+td.title {
+	text-align: left;
+	vertical-align: top;
+	font-family: sans-serif, Tahoma, Arial;
+	font-style: italic;
+	font-weight: bold;
+	background: #D2A41C;
+}
+
+td.header-left {
+	text-align: left;
+	vertical-align: top;
+	font-family: sans-serif, Tahoma, Arial;
+	font-weight: bold;
+	background: #FFDC75;
+}
+
+td.header-center {
+	text-align: center;
+	vertical-align: top;
+	font-family: sans-serif, Tahoma, Arial;
+	font-weight: bold;
+	background: #FFDC75;
+}
+
+td.row-left {
+	text-align: left;
+	vertical-align: middle;
+	font-family: sans-serif, Tahoma, Arial;
+	color: black;
+}
+
+td.row-center {
+	text-align: center;
+	vertical-align: middle;
+	font-family: sans-serif, Tahoma, Arial;
+	color: black;
+}
+
+td.row-right {
+	text-align: right;
+	vertical-align: middle;
+	font-family: sans-serif, Tahoma, Arial;
+	color: black;
+}
+
+TH {
+	text-align: center;
+	vertical-align: top;
+	font-family: sans-serif, Tahoma, Arial;
+	font-weight: bold;
+	background: #FFDC75;
+}
+
+TD {
+	text-align: center;
+	vertical-align: middle;
+	font-family: sans-serif, Tahoma, Arial;
+	color: black;
+}
+
+form {
+	margin: 1;
+}
+
+form.inline {
+	display: inline;
+}
+</style>
+<title>/manager</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+	<table cellspacing="4" border="0">
+		<tr>
+			<td colspan="2"><a href="http://tomcat.apache.org/"> <img
+					border="0" alt="The Tomcat Servlet/JSP Container" align="left"
+					th:src="@{/tomcat.gif}">
+			</a> <a href="http://www.apache.org/"> <img border="0"
+					alt="The Apache Software Foundation" align="right"
+					th:src="@{/asf-logo.svg}" style="width: 266px; height: 83px;">
+			</a></td>
+		</tr>
+	</table>
+	<hr size="1" noshade="noshade">
+	<table cellspacing="4" border="0">
+		<tr>
+			<td class="page-title" bordercolor="#000000" align="left" nowrap>
+				<font size="+2">Server Status</font>
+			</td>
+		</tr>
+	</table>
+	<br>
+
+	<table border="1" cellspacing="0" cellpadding="3">
+		<tr>
+			<td colspan="4" class="title">Manager</td>
+		</tr>
+		<tr>
+			<td class="row-left"><a
+				href="/manager/html/list;jsessionid=181B3A2984CCCA751656DF52D11AC35C">List
+					Applications</a></td>
+			<td class="row-center"><a
+				href="/manager/../docs/html-manager-howto.html">HTML Manager
+					Help</a></td>
+			<td class="row-center"><a
+				href="/manager/../docs/manager-howto.html">Manager Help</a></td>
+			<td class="row-right"><a
+				href="/manager/status/all;jsessionid=181B3A2984CCCA751656DF52D11AC35C">Complete
+					Server Status</a></td>
+		</tr>
+	</table>
+	<br>
+
+	<table border="1" cellspacing="0" cellpadding="3">
+		<tr>
+			<td colspan="8" class="title">Server Information</td>
+		</tr>
+		<tr>
+			<td class="header-center"><small>Tomcat Version</small></td>
+			<td class="header-center"><small>JVM Version</small></td>
+			<td class="header-center"><small>JVM Vendor</small></td>
+			<td class="header-center"><small>OS Name</small></td>
+			<td class="header-center"><small>OS Version</small></td>
+			<td class="header-center"><small>OS Architecture</small></td>
+			<td class="header-center"><small>Hostname</small></td>
+			<td class="header-center"><small>IP Address</small></td>
+		</tr>
+		<tr>
+			<td class="row-center"><small>Apache Tomcat/9.0.0.M26</small></td>
+			<td class="row-center"><small>1.8.0_121-b13</small></td>
+			<td class="row-center"><small>Oracle Corporation</small></td>
+			<td class="row-center"><small>Linux</small></td>
+			<td class="row-center"><small>4.8.0-56-generic</small></td>
+			<td class="row-center"><small>amd64</small></td>
+			<td class="row-center"><small>server</small></td>
+			<td class="row-center"><small>127.0.1.1</small></td>
+		</tr>
+	</table>
+	<br>
+
+	<h1>JVM</h1>
+	<p>Free memory: 308.26 MB Total memory: 725.00 MB Max memory:
+		1751.50 MB</p>
+	<table border="0">
+		<thead>
+			<tr>
+				<th>Memory Pool</th>
+				<th>Type</th>
+				<th>Initial</th>
+				<th>Total</th>
+				<th>Maximum</th>
+				<th>Used</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>PS Eden Space</td>
+				<td>Heap memory</td>
+				<td>31.00 MB</td>
+				<td>604.50 MB</td>
+				<td>605.50 MB</td>
+				<td>350.17 MB (57%)</td>
+			</tr>
+			<tr>
+				<td>PS Old Gen</td>
+				<td>Heap memory</td>
+				<td>83.00 MB</td>
+				<td>97.50 MB</td>
+				<td>1313.50 MB</td>
+				<td>44.04 MB (3%)</td>
+			</tr>
+			<tr>
+				<td>PS Survivor Space</td>
+				<td>Heap memory</td>
+				<td>5.00 MB</td>
+				<td>23.00 MB</td>
+				<td>23.00 MB</td>
+				<td>22.51 MB (97%)</td>
+			</tr>
+			<tr>
+				<td>Code Cache</td>
+				<td>Non-heap memory</td>
+				<td>2.43 MB</td>
+				<td>26.00 MB</td>
+				<td>240.00 MB</td>
+				<td>24.95 MB (10%)</td>
+			</tr>
+			<tr>
+				<td>Compressed Class Space</td>
+				<td>Non-heap memory</td>
+				<td>0.00 MB</td>
+				<td>8.87 MB</td>
+				<td>1024.00 MB</td>
+				<td>8.49 MB (0%)</td>
+			</tr>
+			<tr>
+				<td>Metaspace</td>
+				<td>Non-heap memory</td>
+				<td>0.00 MB</td>
+				<td>70.83 MB</td>
+				<td>-0.00 MB</td>
+				<td>69.14 MB</td>
+			</tr>
+		</tbody>
+	</table>
+	<h1>"ajp-nio-8009"</h1>
+	<p>
+		Max threads: 200 Current thread count: 10 Current thread busy: 0 Keep
+		alive sockets count: 0<br> Max processing time: 0 ms Processing
+		time: 0.0 s Request count: 0 Error count: 0 Bytes received: 0.00 MB
+		Bytes sent: 0.00 MB
+	</p>
+	<table border="0">
+		<tr>
+			<th>Stage</th>
+			<th>Time</th>
+			<th>B Sent</th>
+			<th>B Recv</th>
+			<th>Client (Forwarded)</th>
+			<th>Client (Actual)</th>
+			<th>VHost</th>
+			<th>Request</th>
+		</tr>
+	</table>
+	<p>P: Parse and prepare request S: Service F: Finishing R: Ready K:
+		Keepalive</p>
+	<h1>"http-nio-8080"</h1>
+	<p>
+		Max threads: 200 Current thread count: 10 Current thread busy: 1 Keep
+		alive sockets count: 0<br> Max processing time: 54786 ms
+		Processing time: 56.144 s Request count: 42 Error count: 6 Bytes
+		received: 53.48 MB Bytes sent: 0.50 MB
+	</p>
+	<p>P: Parse and prepare request S: Service F: Finishing R: Ready K:
+		Keepalive</p>
+	<hr size="1" noshade="noshade">
+	<center>
+		<font size="-1" color="#525D76"> <em>Copyright &copy;
+				1999-2017, Apache Software Foundation</em></font>
+	</center>
+
+</body>
+</html>

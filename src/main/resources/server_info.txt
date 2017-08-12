@@ -1,0 +1,7 @@
+OK - Server info
+Tomcat Version: Apache Tomcat/9.0.0.M26
+OS Name: Linux
+OS Version: 4.8.0-56-generic
+OS Architecture: amd64
+JVM Version: 9+181
+JVM Vendor: Oracle Corporation
