@@ -1,4 +1,4 @@
-package com.helospark.tomcatmanagerhoneypot.it;
+package com.helospark.tomcatmanagerhoneypot.it.text;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
@@ -85,27 +85,16 @@ public class TextDeployControllerTest extends AbstractTextControllerIT {
         ResponseEntity<String> result = sendAuthenticatedRequest(tooLongPathParam, TEST_FILE_CONTENT.getBytes());
 
         // THEN
-        assertThat(result.getStatusCode(), is(HttpStatus.BAD_REQUEST));
-    }
-
-    @Test
-    public void testDeployWithTooLongBody() {
-        // GIVEN
-        int fiftyMegabytes = 50 * 1024 * 1024;
-        byte[] tooLargeBody = new byte[fiftyMegabytes];
-
-        // WHEN
-        ResponseEntity<String> result = sendAuthenticatedRequest("textdeploycontrollertestfile", tooLargeBody);
-
-        // THEN
-        assertThat(result.getStatusCode(), is(HttpStatus.BAD_REQUEST));
+        assertThat(result.getStatusCode(), is(HttpStatus.OK));
+        assertThat(result.getBody(), is(
+                "FAIL - Invalid path [/testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttes] was specified"));
     }
 
     private ResponseEntity<String> sendAuthenticatedRequest(String pathName, byte[] body) {
         HttpEntity<?> httpEntity = new HttpEntity<Object>(body);
-        return testRestTemplate.exchange(
-                super.composeUrl("deploy?path=/" + pathName), HttpMethod.PUT,
-                httpEntity, String.class);
+        return testRestTemplate.withBasicAuth("tomcat", "tomcat")
+                .exchange(super.composeUrl("deploy?path=/" + pathName), HttpMethod.PUT,
+                        httpEntity, String.class);
     }
 
 }

@@ -4,9 +4,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.helospark.tomcatmanagerhoneypot.exceptionhandler.annotation.RestErrorHandler;
 import com.helospark.tomcatmanagerhoneypot.service.JndiResourcesService;
 
 @RestController
+@RestErrorHandler
 public class JndiResourcesController {
     private JndiResourcesService jndiResourcesService;
 

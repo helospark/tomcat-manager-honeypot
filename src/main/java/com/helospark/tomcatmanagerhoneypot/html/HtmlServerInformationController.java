@@ -4,9 +4,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.helospark.tomcatmanagerhoneypot.exceptionhandler.annotation.HtmlExceptionHandler;
 import com.helospark.tomcatmanagerhoneypot.service.ServerInformationService;
 
 @Controller
+@HtmlExceptionHandler
 public class HtmlServerInformationController {
     private ServerInformationService serverInformationService;
 

@@ -8,9 +8,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.helospark.tomcatmanagerhoneypot.exceptionhandler.annotation.HtmlExceptionHandler;
 import com.helospark.tomcatmanagerhoneypot.service.UploadApplicationService;
 
 @Controller
+@HtmlExceptionHandler
 public class HtmlUploadController {
     private UploadApplicationService deployApplicationService;
     private MultipartFileFilenameExtractor multipartFileFilenameExtractor;
@@ -23,8 +25,8 @@ public class HtmlUploadController {
 
     @ModelAttribute("status")
     public String getStatus(@RequestParam("deployWar") MultipartFile file) throws IOException {
-        String filaname = multipartFileFilenameExtractor.extractFilename(file);
-        return deployApplicationService.uploadApplication(filaname, file.getBytes());
+        String filename = multipartFileFilenameExtractor.extractFilename(file);
+        return deployApplicationService.uploadApplication(filename, file.getBytes());
     }
 
     @RequestMapping("/html/upload")

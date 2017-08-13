@@ -7,10 +7,12 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.helospark.tomcatmanagerhoneypot.exceptionhandler.annotation.RestErrorHandler;
 import com.helospark.tomcatmanagerhoneypot.service.UploadApplicationService;
 import com.helospark.tomcatmanagerhoneypot.text.domain.TextDeployUriParameters;
 
 @RestController
+@RestErrorHandler
 public class DeployController {
     private UploadApplicationService deployApplicationService;
 

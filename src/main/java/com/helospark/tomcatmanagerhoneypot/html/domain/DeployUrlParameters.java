@@ -1,9 +1,19 @@
 package com.helospark.tomcatmanagerhoneypot.html.domain;
 
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.NotEmpty;
+
 public class DeployUrlParameters {
-    private String deployWar = "";
-    private String deployPath = "";
-    private String deployConfig = "";
+    @NotNull
+    @NotEmpty
+    private String deployWar;
+    @NotNull
+    @NotEmpty
+    private String deployPath;
+    @NotNull
+    @NotEmpty
+    private String deployConfig;
 
     public String getDeployWar() {
         return deployWar;

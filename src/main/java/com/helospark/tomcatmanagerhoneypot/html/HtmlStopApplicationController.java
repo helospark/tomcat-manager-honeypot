@@ -5,9 +5,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.helospark.tomcatmanagerhoneypot.exceptionhandler.annotation.HtmlExceptionHandler;
 import com.helospark.tomcatmanagerhoneypot.service.StopApplicationService;
 
 @Controller
+@HtmlExceptionHandler
 public class HtmlStopApplicationController {
     private StopApplicationService stopApplicationService;
 

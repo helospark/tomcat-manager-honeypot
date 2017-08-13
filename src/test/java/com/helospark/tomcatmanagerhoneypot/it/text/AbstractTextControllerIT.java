@@ -1,4 +1,4 @@
-package com.helospark.tomcatmanagerhoneypot.it;
+package com.helospark.tomcatmanagerhoneypot.it.text;
 
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,8 +19,13 @@ public abstract class AbstractTextControllerIT {
     protected TestRestTemplate testRestTemplate;
 
     protected ResponseEntity<String> performAuthenticatedCall(String uri, HttpMethod method) {
-        return testRestTemplate.exchange(composeUrl(uri), method,
-                null, String.class);
+        return testRestTemplate.withBasicAuth("tomcat", "tomcat")
+                .exchange(composeUrl(uri), method, null, String.class);
+    }
+
+    protected ResponseEntity<String> performNonauthenticatedCall(String uri, HttpMethod method) {
+        return testRestTemplate
+                .exchange(composeUrl(uri), method, null, String.class);
     }
 
     protected String composeUrl(String uri) {

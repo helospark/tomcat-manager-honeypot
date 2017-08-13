@@ -6,10 +6,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.helospark.tomcatmanagerhoneypot.exceptionhandler.annotation.HtmlExceptionHandler;
 import com.helospark.tomcatmanagerhoneypot.html.domain.DeployUrlParameters;
 import com.helospark.tomcatmanagerhoneypot.service.DeployApplicationService;
 
 @Controller
+@HtmlExceptionHandler
 public class HtmlDeployController {
     private DeployApplicationService deployApplicationService;
 

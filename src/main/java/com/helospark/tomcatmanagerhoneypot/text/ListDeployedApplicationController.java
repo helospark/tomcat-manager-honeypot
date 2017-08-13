@@ -3,9 +3,11 @@ package com.helospark.tomcatmanagerhoneypot.text;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.helospark.tomcatmanagerhoneypot.exceptionhandler.annotation.RestErrorHandler;
 import com.helospark.tomcatmanagerhoneypot.service.ListDeployedApplicationService;
 
 @RestController
+@RestErrorHandler
 public class ListDeployedApplicationController {
     private ListDeployedApplicationService listDeployedApplicationService;
 

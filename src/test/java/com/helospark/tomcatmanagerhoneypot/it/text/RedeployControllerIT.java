@@ -1,4 +1,4 @@
-package com.helospark.tomcatmanagerhoneypot.it;
+package com.helospark.tomcatmanagerhoneypot.it.text;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
