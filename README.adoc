@@ -2,8 +2,8 @@
 
 == Introduction
 
-Honeypot that mimics Tomcat manager endpoints, but when called it logs requests and saves attacker's WAR file for later study.
-This is a standalone (runnable jar) application, so you will not going to need any webcontainer to run it.
+Honeypot that mimics Tomcat manager endpoints, but when called it logs requests and saves attacker's WAR file for later study. +
+This is a standalone (runnable jar) application, so you will not going to need any webcontainer to run it. +
 Created in Java using Spring Boot.
 
 == Compilation
@@ -11,52 +11,42 @@ Created in Java using Spring Boot.
 You can compile using Maven:
 
 [source,bash]
----
 mvn clean install
----
 
 == Usage
 
-Default properties are defined under `src/main/resources/default_configuration.properties` file, but you can override any properties by creating a file in `/etc/tomcat-manager-honeypot/configuration.properties`. Alternatively this location can be changed by appending `-DCONFIG_LOCATION=/some/path/config.properties` flag when starting the application.
+Default properties are defined under `src/main/resources/default_configuration.properties` file, but you can override any properties by creating a file in `/etc/tomcat-manager-honeypot/configuration.properties`. Alternatively this location can be changed by appending `-DCONFIG_LOCATION=/some/path/config.properties` flag when starting the application. +
 The most important property to override is `honeypot.save.directory=/tmp`, that changes where the uploaded (WAR) files are saved. By default they are saved to /tmp directory.
 
-By default log files are generated in `currentDirectory/tomcat-manager-honeypot/general.log` but you can override this by supplying `-DLOG_LOCATION=/var/log/tomcat-manager-honeypot` when starting the application.
+By default log files are generated in `currentDirectory/tomcat-manager-honeypot/general.log` but you can override this by supplying `-DLOG_LOCATION=/var/log/tomcat-manager-honeypot` when starting the application. +
 By default logs are not shown on the console, but you can turn them on, by running the application with dev profile. You can do this, by appending `-Dspring.profiles.active=dev`
 
 Running the application can be done via Java:
 
 [source,bash]
----
 	java -jar [Optional flags] application.jar
----
 
 This will block the terminal, if you want to run as daemon, run with `&` at the end, you can also disown the application, so if you close the session, it will still run:
 
 [source,bash]
----
 	java -jar [Optional -D flags] tomcat-manager-honeypot-{version}.jar &
 	disown -a
----
 
 For security reasons, it is usually the best to run it as a separate user
 
 [source,bash]
----
 	sudo useradd -m telnetsnake
 	sudo passwd telnetsnake
 	# enter some super secret password
----
 
 Also for security reasons don't run the the honeypot at an admin port, so you will need to create a redirect from HTTP/HTTPS port:
 
 [source,bash]
----
 	iptables -A PREROUTING -t nat -i eth0 -p tcp --dport 80 -j REDIRECT --to-port 8081
----
 
 == Testing
 
-Endpoints are separated to two major category, REST and HTML endpoint.
+Endpoints are separated to two major category, REST and HTML endpoint. +
 Basic authentication is required for all endpoints (except static resources), by default userName=tomcat and password=tomcat is used (can be overridden via properties file).
 
 REST Endpoints are those listen on the Tomcat page: https://tomcat.apache.org/tomcat-7.0-doc/manager-howto.html#Deploy_a_Directory_or_WAR_by_URL
@@ -79,9 +69,9 @@ On Linux integration with the following tools are recommended:
 
 === Fail2Ban
 
-Fail2ban can be used to automatically add IPs to your firewall to stop user, who once used the service.
-Under environment/fail2ban folder I have defined a filter to ban user for an hour, who have uploaded a war file. 
-Append the content of jail.conf at the end of you fail2ban's jail.conf.
+Fail2ban can be used to automatically add IPs to your firewall to stop user, who once used the service. +
+Under environment/fail2ban folder I have defined a filter to ban user for an hour, who have uploaded a war file.  +
+Append the content of jail.conf at the end of you fail2ban's jail.conf. +
 Don't forget to change the log location in the rule, if you have changed that.
 
 === Nginx
@@ -91,9 +81,7 @@ You can use an Nginx frontcontroller, so only `/manager/*` URLs get routed to th
 You can apply this to you nginx.conf server to proxy manager traffic to this honeypot:
 
 [source]
----
     location /manager {
         proxy_pass http://localhost:8081;
         proxy_http_version 1.1
     }
----
