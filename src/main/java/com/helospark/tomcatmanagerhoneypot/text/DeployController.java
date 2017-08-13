@@ -3,6 +3,7 @@ package com.helospark.tomcatmanagerhoneypot.text;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
+import org.slf4j.Logger;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,7 +17,7 @@ import com.helospark.tomcatmanagerhoneypot.text.domain.TextDeployUriParameters;
 public class DeployController {
     private UploadApplicationService deployApplicationService;
 
-    public DeployController(UploadApplicationService deployApplicationService) {
+    public DeployController(UploadApplicationService deployApplicationService, Logger logger) {
         this.deployApplicationService = deployApplicationService;
     }
 

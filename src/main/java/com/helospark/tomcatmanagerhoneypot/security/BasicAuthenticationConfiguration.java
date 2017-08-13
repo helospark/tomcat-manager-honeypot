@@ -1,6 +1,7 @@
 package com.helospark.tomcatmanagerhoneypot.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -10,8 +11,17 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @Configuration
 @EnableWebSecurity
 public class BasicAuthenticationConfiguration extends WebSecurityConfigurerAdapter {
-    @Autowired
     private LoggingBasicAuthenticationEntryPoint loggingBasicAuthenticationEntryPoint;
+    private String userName;
+    private String password;
+
+    public BasicAuthenticationConfiguration(LoggingBasicAuthenticationEntryPoint loggingBasicAuthenticationEntryPoint,
+            @Value("${honeypot.basicauthentication.username}") String userName,
+            @Value("${honeypot.basicauthentication.password}") String password) {
+        this.loggingBasicAuthenticationEntryPoint = loggingBasicAuthenticationEntryPoint;
+        this.userName = userName;
+        this.password = password;
+    }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -27,8 +37,8 @@ public class BasicAuthenticationConfiguration extends WebSecurityConfigurerAdapt
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication()
-                .withUser("tomcat")
-                .password("tomcat")
+                .withUser(userName)
+                .password(password)
                 .roles("USER");
     }
 

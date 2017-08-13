@@ -2,6 +2,7 @@ package com.helospark.tomcatmanagerhoneypot.html;
 
 import java.io.IOException;
 
+import org.slf4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,7 +19,7 @@ public class HtmlUploadController {
     private MultipartFileFilenameExtractor multipartFileFilenameExtractor;
 
     public HtmlUploadController(UploadApplicationService deployApplicationService,
-            MultipartFileFilenameExtractor multipartFileFilenameExtractor) {
+            MultipartFileFilenameExtractor multipartFileFilenameExtractor, Logger logger) {
         this.deployApplicationService = deployApplicationService;
         this.multipartFileFilenameExtractor = multipartFileFilenameExtractor;
     }

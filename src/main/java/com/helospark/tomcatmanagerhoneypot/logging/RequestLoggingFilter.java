@@ -23,11 +23,11 @@ public class RequestLoggingFilter extends CommonsRequestLoggingFilter {
 
     @Override
     protected void beforeRequest(HttpServletRequest request, String message) {
-        logger.info("Starting to process request " + message);
+        logger.info("Starting to process request. " + message);
     }
 
     @Override
     protected void afterRequest(HttpServletRequest request, String message) {
-        logger.info("Finished processing request");
+        logger.info("Finished processing request. " + message);
     }
 }

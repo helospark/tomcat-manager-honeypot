@@ -7,12 +7,18 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.annotation.PropertySources;
 import org.springframework.context.annotation.Scope;
 
 import com.helospark.tomcatmanagerhoneypot.logging.MdcInitializingFilter;
 import com.helospark.tomcatmanagerhoneypot.logging.RequestLoggingFilter;
 
 @SpringBootApplication
+@PropertySources({
+        @PropertySource("classpath:default_configuration.properties"),
+        @PropertySource(value = "file:${CONFIG_LOCATION:/etc/tomcat-manager-honeypot/configuration.properties}", ignoreResourceNotFound = true)
+})
 public class TomcatManagerHoneypotApplication {
 
     public static void main(String[] args) {

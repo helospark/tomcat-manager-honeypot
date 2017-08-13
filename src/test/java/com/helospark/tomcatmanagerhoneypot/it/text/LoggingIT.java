@@ -21,8 +21,9 @@ public class LoggingIT extends AbstractTextControllerIT {
 
         // THEN
         verify(logger).info(matches(
-                "Starting to process request Before request \\[uri=/manager/text/resources\\?type=database;client=127\\.0\\.0\\.1;.*"));
-        verify(logger).info("Finished processing request");
+                "Starting to process request. Before request \\[uri=/manager/text/resources\\?type=database;client=127\\.0\\.0\\.1;.*"));
+        verify(logger).info(matches(
+                "Finished processing request. After request \\[uri=/manager/text/resources\\?type=database;client=127\\.0\\.0\\.1;.*"));
     }
 
 }

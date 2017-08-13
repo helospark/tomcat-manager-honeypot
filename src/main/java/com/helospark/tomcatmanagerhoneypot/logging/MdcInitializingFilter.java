@@ -1,6 +1,7 @@
 package com.helospark.tomcatmanagerhoneypot.logging;
 
 import java.io.IOException;
+import java.util.UUID;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -13,11 +14,12 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 @Component
 public class MdcInitializingFilter extends OncePerRequestFilter {
+    private static final String USER_IP = "UserIp";
     private static final String REQUEST_ID = "RequestId";
-    private RequestIdFactory userIdentifierExtractor;
+    private RequestIpExtractor userIpExtractor;
 
-    public MdcInitializingFilter(RequestIdFactory userIdentifierExtractor) {
-        this.userIdentifierExtractor = userIdentifierExtractor;
+    public MdcInitializingFilter(RequestIpExtractor userIdentifierExtractor) {
+        this.userIpExtractor = userIdentifierExtractor;
     }
 
     @Override
@@ -29,11 +31,13 @@ public class MdcInitializingFilter extends OncePerRequestFilter {
     }
 
     public void requestInitialized(HttpServletRequest request) {
-        String requestId = userIdentifierExtractor.createRequestId(request);
-        MDC.put(REQUEST_ID, requestId);
+        String requestId = userIpExtractor.getRequestIp(request);
+        MDC.put(USER_IP, requestId);
+        MDC.put(REQUEST_ID, UUID.randomUUID().toString());
     }
 
     public void requestDestroyed(HttpServletRequest request) {
+        MDC.remove(USER_IP);
         MDC.remove(REQUEST_ID);
     }
 }
