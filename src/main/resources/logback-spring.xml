@@ -32,7 +32,7 @@
 		</encoder>
 	</appender>
 	​
-	<root level="DEBUG">
+	<root level="INFO">
 		<springProfile name="dev">
 			<appender-ref ref="console"/>
 		</springProfile>
