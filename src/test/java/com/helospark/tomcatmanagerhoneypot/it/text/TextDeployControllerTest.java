@@ -17,11 +17,9 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.test.context.TestPropertySource;
 
 import com.helospark.tomcatmanagerhoneypot.service.helper.CurrentTimestampProvider;
 
-@TestPropertySource(properties = "honeypot.save.directory=/tmp")
 public class TextDeployControllerTest extends AbstractTextControllerIT {
     private static final String TEST_FILE_CONTENT = "Test";
     private static final String EXPECTED_FILE_NAME = "/tmp/_textdeploycontrollertestfile_123456789";
