@@ -2,6 +2,7 @@ package com.helospark.tomcatmanagerhoneypot.exceptionhandler;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.slf4j.Logger;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -17,16 +18,19 @@ import com.helospark.tomcatmanagerhoneypot.exceptionhandler.helper.UnexpectedExc
 public class HtmlExceptionHandlerControllerAdvice {
     private BindExceptionMessageExtractor bindExceptionMessageExtractor;
     private UnexpectedExceptionMessageProvider unexpectedExceptionMessageProvider;
+    private Logger logger;
 
     public HtmlExceptionHandlerControllerAdvice(BindExceptionMessageExtractor bindExceptionMessageExtractor,
-            UnexpectedExceptionMessageProvider unexpectedExceptionMessageProvider) {
+            UnexpectedExceptionMessageProvider unexpectedExceptionMessageProvider, Logger logger) {
         this.bindExceptionMessageExtractor = bindExceptionMessageExtractor;
         this.unexpectedExceptionMessageProvider = unexpectedExceptionMessageProvider;
+        this.logger = logger;
     }
 
     @ExceptionHandler(BindException.class)
     @ResponseStatus(HttpStatus.OK)
     public ModelAndView processValidationError(HttpServletRequest request, BindException ex) {
+        logger.warn("Bind exception", ex);
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("manager");
         modelAndView.addObject("status", bindExceptionMessageExtractor.getErrorMessage(ex));
@@ -35,7 +39,8 @@ public class HtmlExceptionHandlerControllerAdvice {
 
     @ExceptionHandler(Exception.class)
     @ResponseStatus(HttpStatus.OK)
-    public ModelAndView processUnexpectedException() {
+    public ModelAndView processUnexpectedException(Exception ex) {
+        logger.warn("Unexpected exception", ex);
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("manager");
         modelAndView.addObject("status", unexpectedExceptionMessageProvider.getMessage());
