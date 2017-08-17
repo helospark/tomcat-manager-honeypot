@@ -21,6 +21,10 @@ public class BindExceptionMessageExtractor {
     }
 
     public String getErrorMessage(BindException ex) {
+        return getErrorMessage(ex, true);
+    }
+
+    public String getErrorMessage(BindException ex, boolean includeValue) {
         Optional<FieldError> firstError = ex.getAllErrors()
                 .stream()
                 .filter(error -> error instanceof FieldError)
@@ -28,17 +32,21 @@ public class BindExceptionMessageExtractor {
                 .findFirst();
         if (firstError.isPresent()) {
             String field = firstError.get().getField(); // We could use annotation to make more believable error message
-            String rejectedValue = extractRejectedValue(firstError);
+            String rejectedValue = extractRejectedValue(firstError, includeValue);
             return String.format(bindExceptionTemplate, field, rejectedValue);
         }
         return unexpectedExceptionMessage;
     }
 
-    private String extractRejectedValue(Optional<FieldError> firstError) {
-        String rejectedValue = String.valueOf(firstError.get().getRejectedValue());
-        if (rejectedValue != null && rejectedValue.length() > RESPONSE_REJECTED_VALUE_MAX_LENGTH) {
-            rejectedValue = rejectedValue.substring(0, RESPONSE_REJECTED_VALUE_MAX_LENGTH);
+    private String extractRejectedValue(Optional<FieldError> firstError, boolean includeRejectedValue) {
+        if (includeRejectedValue) {
+            String rejectedValue = String.valueOf(firstError.get().getRejectedValue());
+            if (rejectedValue != null && rejectedValue.length() > RESPONSE_REJECTED_VALUE_MAX_LENGTH) {
+                rejectedValue = rejectedValue.substring(0, RESPONSE_REJECTED_VALUE_MAX_LENGTH);
+            }
+            return rejectedValue;
+        } else {
+            return "";
         }
-        return rejectedValue;
     }
 }

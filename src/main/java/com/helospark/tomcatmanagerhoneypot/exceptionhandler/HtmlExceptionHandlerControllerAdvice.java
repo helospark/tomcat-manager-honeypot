@@ -30,7 +30,7 @@ public class HtmlExceptionHandlerControllerAdvice {
     @ExceptionHandler(BindException.class)
     @ResponseStatus(HttpStatus.OK)
     public ModelAndView processValidationError(HttpServletRequest request, BindException ex) {
-        logger.warn("Bind exception", ex);
+        logger.warn("Bind exception: '{}'", ex.getMessage());
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("manager");
         modelAndView.addObject("status", bindExceptionMessageExtractor.getErrorMessage(ex));
@@ -40,7 +40,7 @@ public class HtmlExceptionHandlerControllerAdvice {
     @ExceptionHandler(Exception.class)
     @ResponseStatus(HttpStatus.OK)
     public ModelAndView processUnexpectedException(Exception ex) {
-        logger.warn("Unexpected exception", ex);
+        logger.error("Unexpected exception", ex);
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("manager");
         modelAndView.addObject("status", unexpectedExceptionMessageProvider.getMessage());

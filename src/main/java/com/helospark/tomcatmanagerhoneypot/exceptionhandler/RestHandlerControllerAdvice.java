@@ -31,7 +31,7 @@ public class RestHandlerControllerAdvice {
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
     public String processValidationError(HttpServletRequest request, BindException ex) {
-        logger.warn("Bind exception", ex);
+        logger.warn("Bind exception: '{}'", ex.getMessage());
         return bindExceptionMessageExtractor.getErrorMessage(ex);
     }
 

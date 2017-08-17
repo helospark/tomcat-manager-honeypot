@@ -51,7 +51,7 @@ public class UploadFormUploadTest extends AbstractUiIT {
 
         // THEN
         WebElement error = getStatusMessage();
-        assertThat(error.getText(), is("FAIL - Encountered exception"));
+        assertThat(error.getText(), is("FAIL - Invalid deployWar [] was specified"));
     }
 
     @Test

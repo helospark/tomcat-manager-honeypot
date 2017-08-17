@@ -46,8 +46,7 @@ public class ConnectorCiphersIT extends AbstractUiIT {
         deployForm.submit();
 
         // THEN
-        WebElement text = webDriver.findElement(By.xpath("/html/body/table[2]/tbody/tr/td/font"));
-        assertThat(text.getText(), is("Tomcat Web Application Manager"));
+        assertPageTitleIs("Tomcat Web Application Manager");
     }
 
 }

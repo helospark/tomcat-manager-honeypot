@@ -1,5 +1,8 @@
 package com.helospark.tomcatmanagerhoneypot.it.badips;
 
+import static com.github.tomakehurst.wiremock.client.WireMock.anyRequestedFor;
+import static com.github.tomakehurst.wiremock.client.WireMock.urlEqualTo;
+import static com.github.tomakehurst.wiremock.client.WireMock.verify;
 import static org.mockito.Mockito.when;
 
 import org.junit.Before;
@@ -14,7 +17,6 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.github.tomakehurst.wiremock.client.WireMock;
 import com.helospark.tomcatmanagerhoneypot.service.IpAddressProvider;
 import com.helospark.tomcatmanagerhoneypot.service.UploadApplicationService;
 
@@ -45,7 +47,7 @@ public class BadIpsReporterIT {
         uploadApplicationService.uploadApplication("/", new byte[0]);
 
         // THEN
-        WireMock.verify(WireMock.anyRequestedFor(WireMock.urlEqualTo("/set/key/dummyApikey")));
-        WireMock.verify(WireMock.anyRequestedFor(WireMock.urlEqualTo("/add/apache/8.8.8.8")));
+        verify(anyRequestedFor(urlEqualTo("/set/key/dummyApikey")));
+        verify(anyRequestedFor(urlEqualTo("/add/apache/8.8.8.8")));
     }
 }

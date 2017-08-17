@@ -1,4 +1,4 @@
-package com.helospark.tomcatmanagerhoneypot.html;
+package com.helospark.tomcatmanagerhoneypot.html.helper;
 
 import java.util.Optional;
 

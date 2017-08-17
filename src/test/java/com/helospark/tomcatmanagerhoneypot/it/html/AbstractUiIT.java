@@ -1,5 +1,8 @@
 package com.helospark.tomcatmanagerhoneypot.it.html;
 
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
+
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -39,5 +42,11 @@ public abstract class AbstractUiIT {
 
     protected WebElement getStatusMessage() {
         return webDriver.findElement(By.xpath("/html/body/table[3]/tbody/tr/td[2]"));
+    }
+
+    protected void assertPageTitleIs(String expectedTitle) {
+        WebElement text = webDriver.findElement(By.xpath("/html/body/table[2]/tbody/tr/td/font"));
+        String title = text.getText();
+        assertThat(title, is(expectedTitle));
     }
 }
