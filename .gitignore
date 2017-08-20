@@ -49,3 +49,4 @@ hs_err_pid*
 >>>>>>> 102eb755d06edc583d87196e41e5a74e88d6cfe2
 
 tomcat-manager-honeypot
+release.properties
